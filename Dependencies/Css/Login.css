@@ -1,0 +1,45 @@
+.login-box-image
+{
+   background-image: url("../Images/login-page-background.jpg");
+}
+
+.login-box-content
+{
+   background-color : #FFFFFF; 
+   padding : 50px; 
+   text-align:center;
+   -webkit-box-shadow: 10px 10px 88px 25px rgba(196,182,196,1);
+   -moz-box-shadow: 10px 10px 88px 25px rgba(196,182,196,1);
+   box-shadow: 10px 10px 88px 25px rgba(196,182,196,1);
+}
+
+.login-button
+{
+   text-decoration: none;
+   border: none;
+   background-color: #098AB3;
+   color: #FFFFFF;
+   margin: 30px auto;
+   width: 250px;
+   height: 40px;
+   line-height: 40px;
+   font-size: 20px;
+}
+
+.login-input-box
+{
+   width: 200px;
+   height: 40px;
+   line-height: 40px;
+   border: none;
+   border-bottom: 1px solid #D3D3D3;
+   text-decoration: none;
+}
+
+.login-input-box:focus
+{
+   border: none;
+   text-decoration: none;
+   outline: none;
+   border-bottom: 1px solid #D3D3D3;
+}
