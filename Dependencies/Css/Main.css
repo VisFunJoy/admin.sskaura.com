@@ -1,3 +1,5 @@
+/* Login View Css */
+
 .login-box-image
 {
    background-image: url("../Images/login-page-background.jpg");
@@ -26,20 +28,3 @@
    font-size: 20px;
 }
 
-.login-input-box
-{
-   width: 200px;
-   height: 40px;
-   line-height: 40px;
-   border: none;
-   border-bottom: 1px solid #D3D3D3;
-   text-decoration: none;
-}
-
-.login-input-box:focus
-{
-   border: none;
-   text-decoration: none;
-   outline: none;
-   border-bottom: 1px solid #D3D3D3;
-}

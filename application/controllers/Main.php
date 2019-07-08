@@ -20,6 +20,52 @@ class Main extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('Login');
-	}
+      $data = array();
+		$this->load->view('Login', $data);
+   }
+   
+   public function check_login()
+   {
+      $username = $this->input->post('username');
+      $password = $this->input->post('password');
+
+      if ($username == '' || $password == '')
+      {
+         $data['message'] = 'Username and password are required fields.';
+         $this->load->view('Login', $data);
+      }
+      else if ($username == '123' && $password == '123')
+      {
+         $data = array();
+         $session_data = array("login" => true);
+         $this->session->set_userdata($session_data);
+         $this->load->view('Dashboard', $data);
+      }
+      else
+      {
+         $data['message'] = 'Login Failed due to wrong credentials.';
+         $this->load->view('Login', $data);
+      }
+   }
+
+   public function load_dashboard()
+	{
+      $data = array();
+		$this->load->view('Dashboard', $data);
+   }
+   
+   public function load_news()
+	{
+      $data = array();
+		$this->load->view('News', $data);
+   }
+   
+
+   public function logout()
+	{
+      $data = array();
+      $session_data = array("login" => false);
+      $this->session->set_userdata($session_data);
+		$this->load->view('Login', $data);
+   }
 }
