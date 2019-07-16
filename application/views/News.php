@@ -12,8 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <link rel="stylesheet" href="<?php echo base_url();; ?>/Dependencies/Css/Main.css">
 
    <!-- Include Ckeditor -->
-   <script src="https://cdn.ckeditor.com/ckeditor5/12.2.0/classic/ckeditor.js"></script>
-
+   <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
 </head>
 
 <body>
@@ -24,31 +23,71 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       Add News Here
   </div>
 
-  <div style = "padding: 30px; margin: 30px auto;" class = "container">
-      <div class = "row">
-         <div class = "col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-            <h5>
-               1. Enter Title of news here(max 266 characters):
-            </h5>
+<form action="<?php echo site_url(); ?>/Main/add_news" method = "Post" onsubmit = "return check_ckeditor_not_null()">
+   <div style = "padding: 30px; margin: 30px auto;" class = "container">
+         <div class = "row">
+            <div class = "col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+               <h5>
+                  1. Enter Title of news here(max 266 characters):
+               </h5>
+            </div>
+            <div class = "col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+               <input required autocomplete="off" class = "input-box" style = "margin:10px auto; width: 400px;" placeholder = "News Title" type="text" name="news_title"><br>
+            </div>
          </div>
-         <div class = "col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-            <input autocomplete="off" class = "input-box" style = "margin:10px auto; width: 400px;" placeholder = "News Title" type="text" name="news_title"><br>
+
+         <hr>
+         <div class = "row">
+            <div class = "col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+               <h5>
+                  2. Enter description of news here:
+               </h5>
+            </div>
+            <div class = "col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+               <textarea id = "ckeditor" required name="news_description"></textarea>
+               <script>
+                  CKEDITOR.replace('ckeditor');
+                  function check_ckeditor_not_null()
+                  {
+                     var ckValue = CKEDITOR.instances["ckeditor"].getData();
+
+                     if (ckvalue == null)
+                     {
+                        alert('News description cannot be empty.');
+                        return false;
+                     }
+                     else
+                     {
+                        alert('2nd');
+                        return false;
+                     }
+                     alert('3rd');
+                     return false;
+                  }
+               </script>  
+            </div>
          </div>
-      </div>
-      <hr>
-      <div class = "row">
-         <div class = "col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-            <h5>
-               2. Enter description of here:
-            </h5>
+
+         <hr>
+         <div class = "row">
+            <div class = "col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+               <h5>
+                  2. Select image for news here:
+               </h5>
+            </div>
+            <div class = "col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+               <input required type="file" name="news_pic" accept="image/*">       
+            </div>
          </div>
-         <div class = "col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-            <textarea cols="80" id="edi" name="editor1" rows="10"></textarea>
-            <script>
-               CKEDITOR.replace('edi');
-            </script>          
+         <div class = "row">
+            <button type = "submit" class = "button">
+               Add News
+            </button>
          </div>
-      </div>
-  </div>
+         <?php if (isset($message)): ?>
+               <h4><?php echo $message; ?></h4>
+         <?php endif; ?>
+   </div>
+</form>
 </body>
 </html>

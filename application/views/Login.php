@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <form action="<?php echo site_url(); ?>/Main/check_login" method = "Post">
                <input autocomplete="off" class = "input-box" style = "margin:10px auto;" placeholder = "User Name" type="text" name="username"><br>
                <input autocomplete="off" class = "input-box" style = "margin:10px auto;" placeholder = "Password" type="text" name="password"><br>
-               <button class = "login-button" type="submit">Login</button>
+               <button class = "button" type="submit">Login</button>
             </form>
             <?php if (isset($message)): ?>
                <h4><?php echo $message; ?></h4>

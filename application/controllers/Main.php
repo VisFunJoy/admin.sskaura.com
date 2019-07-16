@@ -60,6 +60,33 @@ class Main extends CI_Controller {
 		$this->load->view('News', $data);
    }
    
+   public function add_news()
+   {
+      $this->load->model('MainModel');
+      
+      $news_title = $this->input->post('news_title');
+      $news_description = $this->input->post('news_description');
+      $news_image = $this->input->post('news_image');
+
+      $parameters = array(
+         'news_title'          => $news_title,
+         'news_description'    => $news_description,
+         'news_image'          => $news_image
+      );
+
+      $add_news = $this->MainModel->add_news($parameters);
+
+      if ($add_news == true)
+      {
+         $data['message'] = 'News added successfully';
+         $this->load->view('News', $data);
+      }
+      else
+      {
+         $data['message'] = 'Database error while adding news, please try again.';
+         $this->load->view('News', $data);
+      }
+   }
 
    public function logout()
 	{

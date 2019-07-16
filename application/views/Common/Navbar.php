@@ -12,7 +12,7 @@
             <a class="nav-link" href="<?php echo site_url(); ?>/Main/load_dashboard">Dashboard <span class="sr-only">(current)</span></a>
          </li>
          <li class="nav-item">
-            <a class="nav-link" href="<?php echo site_url(); ?>/Main/load_news">News</a>
+            <a class="nav-link" href="<?php echo site_url(); ?>/Main/load_news">News section</a>
          </li>
          <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url(); ?>/Main/logout">Logout</a>

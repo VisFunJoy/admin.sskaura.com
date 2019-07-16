@@ -40,3 +40,22 @@
    outline: none;
    border-bottom: 1px solid #D3D3D3;
 }
+
+.button
+{
+   text-decoration: none;
+   border: none;
+   background-color: #098AB3;
+   color: #FFFFFF;
+   margin: 30px auto;
+   width: 250px;
+   height: 40px;
+   line-height: 40px;
+   font-size: 20px;
+}
+
+.row
+{
+   margin-top: 30px;
+   margin-bottom: 30px;
+}

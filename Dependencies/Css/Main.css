@@ -15,16 +15,3 @@
    box-shadow: 10px 10px 88px 25px rgba(196,182,196,1);
 }
 
-.login-button
-{
-   text-decoration: none;
-   border: none;
-   background-color: #098AB3;
-   color: #FFFFFF;
-   margin: 30px auto;
-   width: 250px;
-   height: 40px;
-   line-height: 40px;
-   font-size: 20px;
-}
-
