@@ -39,7 +39,7 @@ class Main extends CI_Controller {
          $data = array();
          $session_data = array("login" => true);
          $this->session->set_userdata($session_data);
-         $this->load->view('Dashboard', $data);
+         $this->load->view('News', $data);
       }
       else
       {
@@ -66,7 +66,26 @@ class Main extends CI_Controller {
       
       $news_title = $this->input->post('news_title');
       $news_description = $this->input->post('news_description');
-      $news_image = $this->input->post('news_image');
+      $news_image = $_FILES["news_pic"]["name"];
+
+      /* Upload image to server and get news image url. */
+
+      $target_dir = TARGET_DIR;
+      $news_image_base_url = NEWS_IMAGE_BASE_URL;
+      $target_file = $target_dir.basename($news_image);
+      $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+      move_uploaded_file($_FILES["news_pic"]["tmp_name"], $target_file);
+
+      if ($_FILES["news_pic"]["name"] != NULL)
+      {
+         $news_image = $news_image_base_url.$_FILES["news_pic"]["name"];
+      }
+      else
+      {
+         $news_image = null;
+      }
+
+      /* --------------------------------------------- */
 
       $parameters = array(
          'news_title'          => $news_title,

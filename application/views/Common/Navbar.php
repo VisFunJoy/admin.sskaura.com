@@ -8,9 +8,9 @@
    </button>
    <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
-         <li class="nav-item">
+        <!--  <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url(); ?>/Main/load_dashboard">Dashboard <span class="sr-only">(current)</span></a>
-         </li>
+         </li> -->
          <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url(); ?>/Main/load_news">News section</a>
          </li>

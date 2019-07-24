@@ -23,8 +23,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       Add News Here
   </div>
 
-<form action="<?php echo site_url(); ?>/Main/add_news" method = "Post" onsubmit = "return check_ckeditor_not_null()">
+<form action="<?php echo site_url(); ?>/Main/add_news" method = "Post" enctype="multipart/form-data" onsubmit = "return check_ckeditor_not_null()">
    <div style = "padding: 30px; margin: 30px auto;" class = "container">
+         <div class = "row">
+            <?php if (isset($message)): ?>
+               <h4 style = "color:red;"><?php echo $message; ?></h4>
+            <?php endif; ?>
+         </div>
          <div class = "row">
             <div class = "col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                <h5>
@@ -49,20 +54,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   CKEDITOR.replace('ckeditor');
                   function check_ckeditor_not_null()
                   {
-                     var ckValue = CKEDITOR.instances["ckeditor"].getData();
-
-                     if (ckvalue == null)
+                     if (CKEDITOR.instances["ckeditor"].getData() == '')
                      {
                         alert('News description cannot be empty.');
                         return false;
                      }
                      else
                      {
-                        alert('2nd');
-                        return false;
+                        return true;
                      }
-                     alert('3rd');
-                     return false;
                   }
                </script>  
             </div>
@@ -76,7 +76,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                </h5>
             </div>
             <div class = "col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-               <input required type="file" name="news_pic" accept="image/*">       
+               <input required type="file" name="news_pic" id="news_pic" accept="image/*">       
             </div>
          </div>
          <div class = "row">
@@ -84,9 +84,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                Add News
             </button>
          </div>
-         <?php if (isset($message)): ?>
-               <h4><?php echo $message; ?></h4>
-         <?php endif; ?>
    </div>
 </form>
 </body>

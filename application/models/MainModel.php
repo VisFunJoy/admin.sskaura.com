@@ -18,7 +18,14 @@
             'posted_on'      => $posted_on
          );
 
-         $this->db->insert('news', $data);
+         if ($this->db->insert('news', $data))
+         {
+            return true;
+         }
+         else
+         {
+            return false;
+         }
       }
 
       public function get_incremented_news_id()
