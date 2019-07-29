@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <div style = "padding: 30px; margin: 30px auto;" class = "container">
          <div class = "row">
             <?php if (isset($message)): ?>
-               <h4 style = "color:red;"><?php echo $message; ?></h4>
+               <h4 style = "color:#098AB3;"><?php echo $message; ?></h4>
             <?php endif; ?>
          </div>
          <div class = "row">

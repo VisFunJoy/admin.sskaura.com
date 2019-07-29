@@ -31,13 +31,11 @@
       public function get_incremented_news_id()
       {
          $query = $this->db->select('id')
-                           ->from('news')
-                           ->where(1)
-                           ->order_by('id', 'desc')
-                           ->limit(1);
+                           ->limit(1)
+                           ->order_by('id', 'asc');
 
-         $action = $query->get();
-
+         $action = $query->get('news');
+         
          $result = $action->result_array();    
          
          if ($result == array())
@@ -46,7 +44,7 @@
          }
          else
          {
-            return 2;
+            return $result[0]['id'] + 1;
          }
       }
    }
