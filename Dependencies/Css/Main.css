@@ -15,3 +15,15 @@
    box-shadow: 10px 10px 88px 25px rgba(196,182,196,1);
 }
 
+.pagination
+{
+   padding-left:100px;
+   background-color: var(--app_color2);
+}
+
+.pagination li, .pagination a
+{
+   margin: 20px;
+   font-size: 20px;
+   color: var(--app_color1);
+}

@@ -8,11 +8,14 @@
    </button>
    <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
-        <!--  <li class="nav-item">
-            <a class="nav-link" href="<?php echo site_url(); ?>/Main/load_dashboard">Dashboard <span class="sr-only">(current)</span></a>
-         </li> -->
          <li class="nav-item">
-            <a class="nav-link" href="<?php echo site_url(); ?>/Main/load_news">News section</a>
+            <a class="nav-link" href="<?php echo site_url(); ?>/Main/load_dashboard">Dashboard <span class="sr-only">(current)</span></a>
+         </li>
+         <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url(); ?>/Main/load_news_section">News section</a>
+         </li>
+         <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url(); ?>/Main/load_message_from_mrkaura">Message From MrKaura</a>
          </li>
          <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url(); ?>/Main/logout">Logout</a>

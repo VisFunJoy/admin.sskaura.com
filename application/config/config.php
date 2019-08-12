@@ -32,6 +32,8 @@ else
    $config['base_url'] = 'http://admin.sskaura.com';
 }
 
+date_default_timezone_set('Asia/Kolkata');
+
 /*
 |--------------------------------------------------------------------------
 | Index File

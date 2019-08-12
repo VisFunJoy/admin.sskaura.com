@@ -20,34 +20,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <!-- Content -->
 <div class = "heading">
-   Contact Messages
+   All News
 </div>
 
+<div style = "padding : 50px;">
+   <?php if (isset($message)): ?>
+      <h4 style = "color:red;"><?php echo $message; ?></h4>
+   <?php endif; ?>
+</div>
 <div class = "container">
-   <?php if ($all_contact_messages_for_particular_page == false): ?>
+   <?php if ($all_news_for_particular_page == false): ?>
       <div style = "text-align:center;margin: 40px;">
          <h4  style = "color: gray;">
-            Sorry, No messages yet.......
+            Sorry, No news yet.......
          </h4>
       </div>
    <?php else: ?>
-      <?php foreach($all_contact_messages_for_particular_page as $single_contact_message): ?>
+      <?php foreach($all_news_for_particular_page as $single_news): ?>
             <div class = "single-news">
                <div class = "row">
                   <div style = "text-align:center;" class = "col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                      <h3 style = "border-bottom:2px solid #FCCD04;color: #A64AC9;text-align:center; margin-bottom: 30px;">
-                        <b>Subject : </b><?php echo $single_contact_message['subject'] ?>
+                        <?php echo $single_news['title'] ?>
                      </h3>
                      <div style = "color: gray; margin : 20px;">
-                        <b>Sent On : </b><?php echo date('d/m/Y H:i:s', $single_contact_message['created_at']); ?><br><br>
-                        <b>Sent By : </b><?php echo $single_contact_message['name'] ?><br><br>
-                        <b>Email-Address : </b><?php echo $single_contact_message['email_address'] ?>
+                        <b>Posted On : </b><?php echo date('d/m/Y H:i:s', $single_news['posted_on']); ?>
                      </div>
+                     <img width = "350" height= "200" src="<?php echo $single_news["image"]; ?>" alt="News Image">
                   </div>
                   <div style = "text-align:center;" class = "col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                     <p>
-                        <?php echo $single_contact_message['message'] ?>
-                     </p>
+                     <form style = "margin-top:100px;" action="<?php echo site_url(); ?>/Main/delete_news/<?php echo $single_news['id']; ?>">
+                        <button style = "background-color: red;" class = "button" type="submit">Delete This News</button>
+                     </form>
                   </div>
                </div>
             </div>

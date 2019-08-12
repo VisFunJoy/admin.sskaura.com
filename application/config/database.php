@@ -78,7 +78,7 @@ if (ENVIRONMENT == 'development')
 }
 else
 {
-   $active_group = 'production';
+   $active_group = 'qwertyuioplkjhgf';
 }
 
 $db['development'] = array(
@@ -103,12 +103,12 @@ $db['development'] = array(
 	'save_queries' => TRUE
 );
 
-$db['production'] = array(
+$db['qwertyuioplkjhgf'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => '',
-	'password' => '',
-	'database' => '',
+	'username' => 'qwertyuioplkjhgf',
+	'password' => 'admin',
+	'database' => 'qwertyuioplkjhgfdsa',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

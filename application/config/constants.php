@@ -91,6 +91,6 @@ if (ENVIRONMENT == 'development')
 }
 else
 {
-   define('TARGET_DIR', 0);
-   define('NEWS_IMAGE_BASE_URL', 0);
+   define('TARGET_DIR', '/home/e19w8nt8ulwn/public_html/Images/NewsImages/');
+   define('NEWS_IMAGE_BASE_URL', 'http://sskaura.com/Images/NewsImages/');
 }
