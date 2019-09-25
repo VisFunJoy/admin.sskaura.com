@@ -223,75 +223,121 @@ class Main extends CI_Controller {
 
       if ($delete_news == true)
       {
-         $config = array();
-         $config["base_url"] = base_url() . "index.php/Main/show_all_news";
-         $config["total_rows"] = $this->MainModel->get_total_news();
-         $config["per_page"] = 5; 
-   
-         /* Design pagination */
-         $config['full_tag_open'] = "<ul class='pagination'>";
-         $config['full_tag_close'] = '</ul>';
-         $config['num_tag_open'] = '<li>';
-         $config['num_tag_close'] = '</li>';
-         $config['cur_tag_open'] = '<li class="active"><a href="#">';
-         $config['cur_tag_close'] = '</a></li>';
-         $config['prev_tag_open'] = '<li>';
-         $config['prev_tag_close'] = '</li>';
-         $config['first_tag_open'] = '<li>';
-         $config['first_tag_close'] = '</li>';
-         $config['last_tag_open'] = '<li>';
-         $config['last_tag_close'] = '</li>';
-   
-         $config['next_link'] = '<ion-icon name="fastforward"></ion-icon>';
-   
-         $config['prev_link'] = '<ion-icon name="rewind"></ion-icon>';
-   
-         $this->pagination->initialize($config);
-   
-         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-   
-         $data = array();
-         $data["all_news_for_particular_page"] = $this->MainModel->get_news_for_particular_page($config["per_page"], $page);
-         $data["links"] = $this->pagination->create_links();
-         $data['message'] = 'News deleted successfully';
-
-         $this->load->view('AllNews', $data);
+         $data['message'] = 'News Deleted successfully.';
+         $this->load->view('ShowMessage', $data);
       }
       else
       {
-         $config = array();
-         $config["base_url"] = base_url() . "index.php/Main/show_all_news";
-         $config["total_rows"] = $this->MainModel->get_total_news();
-         $config["per_page"] = 5; 
+         $data['message'] = 'Unable to delete news due to database errors.';
+         $this->load->view('ShowMessage', $data);      }
+      }
 
-         /* Design pagination */
-         $config['full_tag_open'] = "<ul class='pagination'>";
-         $config['full_tag_close'] = '</ul>';
-         $config['num_tag_open'] = '<li>';
-         $config['num_tag_close'] = '</li>';
-         $config['cur_tag_open'] = '<li class="active"><a href="#">';
-         $config['cur_tag_close'] = '</a></li>';
-         $config['prev_tag_open'] = '<li>';
-         $config['prev_tag_close'] = '</li>';
-         $config['first_tag_open'] = '<li>';
-         $config['first_tag_close'] = '</li>';
-         $config['last_tag_open'] = '<li>';
-         $config['last_tag_close'] = '</li>';
+   public function load_events_section()
+	{
+      $data = array();
+		$this->load->view('EventsSection', $data);
+   }
 
-         $config['next_link'] = '<ion-icon name="fastforward"></ion-icon>';
+   public function show_add_event()
+   {
+      $data = array();
+		$this->load->view('AddEvent', $data);
+   }
 
-         $config['prev_link'] = '<ion-icon name="rewind"></ion-icon>';
+   public function show_all_events()
+	{
+      $config = array();
+      $config["base_url"] = base_url() . "index.php/Main/show_all_events";
+      $config["total_rows"] = $this->MainModel->get_total_news();
+      $config["per_page"] = 5; 
 
-         $this->pagination->initialize($config);
+      /* Design pagination */
+      $config['full_tag_open'] = "<ul class='pagination'>";
+      $config['full_tag_close'] = '</ul>';
+      $config['num_tag_open'] = '<li>';
+      $config['num_tag_close'] = '</li>';
+      $config['cur_tag_open'] = '<li class="active"><a href="#">';
+      $config['cur_tag_close'] = '</a></li>';
+      $config['prev_tag_open'] = '<li>';
+      $config['prev_tag_close'] = '</li>';
+      $config['first_tag_open'] = '<li>';
+      $config['first_tag_close'] = '</li>';
+      $config['last_tag_open'] = '<li>';
+      $config['last_tag_close'] = '</li>';
 
-         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+      $config['next_link'] = '<ion-icon name="fastforward"></ion-icon>';
 
-         $data = array();
-         $data["all_news_for_particular_page"] = $this->MainModel->get_news_for_particular_page($config["per_page"], $page);
-         $data["links"] = $this->pagination->create_links();
+      $config['prev_link'] = '<ion-icon name="rewind"></ion-icon>';
 
-         $data['message'] = 'Database error while deleting news, please try again.';
-         $this->load->view('AllNews', $data);
+      $this->pagination->initialize($config);
+
+      $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+      $data = array();
+      $data["all_events_for_particular_page"] = $this->MainModel->get_events_for_particular_page($config["per_page"], $page);
+      $data["links"] = $this->pagination->create_links();
+
+      $this->load->view('AllEvents', $data);
+   }
+   
+   public function add_event()
+   {      
+      $event_title = $this->input->post('event_title');
+      $event_description = $this->input->post('event_description');
+      $event_image = $_FILES["event_pic"]["name"];
+
+      /* Upload image to server and get news image url. */
+
+      $target_dir = TARGET_DIR_EVENTS;
+      $event_image_base_url = EVENT_IMAGE_BASE_URL;
+      $target_file = $target_dir.basename($event_image);
+      $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+      move_uploaded_file($_FILES["event_pic"]["tmp_name"], $target_file);
+
+      if ($_FILES["event_pic"]["name"] != NULL)
+      {
+         $event_image = $event_image_base_url.$_FILES["event_pic"]["name"];
+      }
+      else
+      {
+         $event_image = null;
+      }
+
+      /* --------------------------------------------- */
+
+      $parameters = array(
+         'event_title'          => $event_title,
+         'event_description'    => $event_description,
+         'event_image'          => $event_image
+      );
+
+      $add_event = $this->MainModel->add_event($parameters);
+
+      if ($add_event == true)
+      {
+         $data['message'] = 'Event added successfully';
+         $this->load->view('AddEvent', $data);
+      }
+      else
+      {
+         $data['message'] = 'Database error while adding event, please try again.';
+         $this->load->view('AddEvent', $data);
+      }
+   }
+
+   public function delete_event($event_id)
+   {
+      $delete_event = $this->MainModel->delete_event($event_id);
+
+      if ($delete_event == true)
+      {
+         $data['message'] = 'Event deleted successfully';
+         $this->load->view('ShowMessage', $data);      
+      }
+      else
+      {
+         $data['message'] = 'Database error while deleting event, please try again.';
+         $this->load->view('ShowMessage', $data);      
       }
    }
 

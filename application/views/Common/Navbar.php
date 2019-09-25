@@ -15,6 +15,9 @@
             <a class="nav-link" href="<?php echo site_url(); ?>/Main/load_news_section">News section</a>
          </li>
          <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url(); ?>/Main/load_events_section">Events section</a>
+         </li>
+         <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url(); ?>/Main/load_message_from_mrkaura">Message From MrKaura</a>
          </li>
          <li class="nav-item">

@@ -88,9 +88,13 @@ if (ENVIRONMENT == 'development')
 {
    define('TARGET_DIR', $_SERVER['DOCUMENT_ROOT'].'../Dependencies/TempImages/sskaura.com/NewsImages/');
    define('NEWS_IMAGE_BASE_URL', 'http://localhost/Dependencies/TempImages/sskaura.com/NewsImages/');
+   define('TARGET_DIR_EVENTS', $_SERVER['DOCUMENT_ROOT'].'../Dependencies/TempImages/sskaura.com/EventImages/');
+   define('EVENT_IMAGE_BASE_URL', 'http://localhost/Dependencies/TempImages/sskaura.com/EventImages/');
 }
 else
 {
    define('TARGET_DIR', '/home/e19w8nt8ulwn/public_html/Images/NewsImages/');
    define('NEWS_IMAGE_BASE_URL', 'http://sskaura.com/Images/NewsImages/');
+   define('TARGET_DIR_EVENTS', '/home/e19w8nt8ulwn/public_html/Images/EventImages/');
+   define('EVENT_IMAGE_BASE_URL', 'http://sskaura.com/Images/EventImages/');
 }

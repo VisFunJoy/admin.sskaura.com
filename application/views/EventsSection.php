@@ -18,19 +18,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <?php include_once("Common/Navbar.php"); ?>
 
   <div class = "heading">
-      News Section
+      Events Section
   </div>
 
    <div class = "container">
       <div class = "row">
          <div style = "text-align:center;" class = "col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-         <form action="<?php echo site_url(); ?>/Main/show_all_news">
-            <button style = "background-color: #A64AC9;" class = "button" type="submit">All News</button>
+         <form action="<?php echo site_url(); ?>/Main/show_all_events">
+            <button style = "background-color: #A64AC9;" class = "button" type="submit">All Events</button>
          </form>
          </div>
          <div style = "text-align:center;" class = "col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-            <form action="<?php echo site_url(); ?>/Main/show_add_news">
-               <button style = "background-color: #FCCD04;" class = "button" type="submit">Add News</button>
+            <form action="<?php echo site_url(); ?>/Main/show_add_event">
+               <button style = "background-color: #FCCD04;" class = "button" type="submit">Add Event</button>
             </form>
          </div>
       </div>
